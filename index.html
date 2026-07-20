@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#121a2a" />
+  <meta name="description" content="A private daily practice app." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Marginal</title>
+</head>
+<body>
+  <main class="app-shell">
+    <header>
+      <div>
+        <p class="eyebrow">YOUR DAILY EDGE</p>
+        <h1>Marginal</h1>
+      </div>
+      <button class="streak" aria-label="Current streak"><span aria-hidden="true">⚡</span><strong id="streakCount">1</strong></button>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">BUILD YOUR LUNCH BREAK</p>
+      <h2>What do you want to train today?</h2>
+      <p>Choose drills, set a little time, and keep showing up.</p>
+      <div class="session-total"><strong id="totalMinutes">0</strong><span>minutes planned</span></div>
+    </section>
+
+    <section aria-labelledby="drillsTitle">
+      <div class="section-heading"><h2 id="drillsTitle">Your drills</h2><button class="text-button" id="clearButton">Clear</button></div>
+      <div class="drill-grid" id="drillGrid"></div>
+    </section>
+
+    <section class="plan" id="planCard" hidden aria-live="polite">
+      <div class="section-heading"><h2>Today’s plan</h2><span id="planLabel"></span></div>
+      <div id="planItems"></div>
+    </section>
+
+    <button class="start-button" id="startButton" disabled>Choose a drill to begin</button>
+    <p class="hint">Small sessions count. Consistency is the point.</p>
+  </main>
+
+  <dialog id="timerDialog" class="drill-dialog" aria-labelledby="timerTitle">
+    <button class="close" id="closeTimer" aria-label="Close drill">×</button>
+    <div class="runtime-top">
+      <p class="eyebrow" id="timerTopic">TRAINING</p>
+      <div class="timer" id="timer" aria-label="Time remaining">15:00</div>
+    </div>
+    <h2 id="timerTitle">Ready?</h2>
+    <p class="block-status" id="blockStatus" hidden></p>
+
+    <section id="questionView" class="question-view">
+      <p class="question-meta" id="questionMeta"></p>
+      <div class="question-prompt" id="timerPrompt"></div>
+      <details class="schema-panel" id="schemaPanel" hidden>
+        <summary>Sample schema and data</summary>
+        <pre id="sqlSchema"></pre>
+      </details>
+      <div class="answer-area" id="answerArea"></div>
+    </section>
+
+    <section id="catanView" class="catan-view" hidden>
+      <p class="question-meta" id="catanMeta"></p>
+      <p class="question-prompt">Choose the best two starting settlement spots. Decide why from pips and resource diversity before grading.</p>
+      <div class="catan-board" id="catanBoard"></div>
+      <p class="selection-status" id="catanSelectionStatus">0 of 2 spots selected</p>
+    </section>
+
+    <section class="feedback" id="feedbackPanel" hidden aria-live="polite">
+      <strong id="feedbackTitle"></strong>
+      <p id="feedbackText"></p>
+    </section>
+
+    <div class="timer-actions" id="timerActions">
+      <button class="secondary" id="skipButton">Skip</button>
+      <button class="start-button" id="submitButton" disabled>Submit answer</button>
+    </div>
+  </dialog>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
